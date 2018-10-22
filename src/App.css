@@ -1,4 +1,79 @@
-.App {
-    margin: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
+@font-face {
+	font-family: 'Lilita One';
+	src: url(./resources/LilitaOne-Regular.ttf);
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+body {
+    background-color: #1565C0;
+}
+
+.container {
+    width: 72.5vh;
+    height: 70vh;
+    bottom: 5vh;
+    margin: 10vh auto;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+    border-radius: 2.5vh;
+    background-color: #FBC02D;
+}
+
+.container-top {
+    height: 2.5vh;
+    width: 72.5vh;
+}
+
+.container-bottom {
+    height: 10vh;
+    width: 72.5vh;
+    color: #f44336;
+    font-size: 5vh;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Lilita One', monospace;
+}
+
+.container .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    height: 10vh;
+    width: 10vh;
+    background-color: #FBC02D;
+    position: relative;
+    z-index: 2;
+}
+
+.cell:before {
+    content: '';
+    height: 8.5vh;
+    width: 8.5vh;
+    background-color:#1565C0;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+}
+
+.player-piece {
+    background-color: #f44336;
+    height: 8.5vh;
+    width: 8.5vh;
 }
