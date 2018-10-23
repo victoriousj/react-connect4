@@ -1,7 +1,7 @@
 {
-  "name": "react-min-via",
-  "version": "1.0.0",
-  "description": "This is the minimal amount of coding needed in order to get a React app up and running with Babel 7 and served with Webpack.",
+  "name": "react-connect4",
+  "version": "0.1.0",
+  "description": "A remaking of the classic Connect 4 game, using React, Webpack, and Babel",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode-development",
@@ -9,14 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/victoriousj/react-min-via.git"
+    "url": "git+https://github.com/victoriousj/react-connect4.git"
   },
   "author": "Vic",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/victoriousj/react-min-via/issues"
   },
-  "homepage": "https://github.com/victoriousj/react-min-via#readme",
+  "homepage": "https://github.com/victoriousj/react-connect4#readme",
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -29,9 +33,5 @@
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
-  },
-  "dependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
   }
 }
