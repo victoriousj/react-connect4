@@ -27,13 +27,22 @@ body {
 	justify-content: center;
 	flex-wrap: wrap;
 	flex-direction: row;
-    border-radius: 2.5vh;
-    background-color: #FBC02D;
+}
+
+.container-body {
+    display: flex;
+    flex-direction: row;
+    width: 72.5vh;
+    justify-content: center;
+    border-left: 1.25vh solid #FBC02D;
+    border-right: 1.25vh solid #FBC02D;
 }
 
 .container-top {
     height: 2.5vh;
     width: 72.5vh;
+    border-radius: 2.5vh 2.5vh 0 0;
+    background-color: #FBC02D;
 }
 
 .container-bottom {
@@ -44,36 +53,39 @@ body {
     text-align: center;
     text-transform: uppercase;
     font-family: 'Lilita One', monospace;
+    background-color: #FBC02D;
+    border-radius: 0 0 2.5vh 2.5vh;
 }
 
-.container .row {
+.container .column {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
 }
 
 .cell {
-    height: 10vh;
-    width: 10vh;
-    background-color: #FBC02D;
-    position: relative;
-    z-index: 2;
+    width:10vh;
+    height:10vh;
+    position:relative;
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cell:before {
-    content: '';
-    height: 8.5vh;
-    width: 8.5vh;
-    background-color:#1565C0;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 4;
-    transform: translate(-50%, -50%);
+    content:"";
+    position:absolute;
+    width:9vh;
+    height:9vh;
+    left:5%; top:5%;
+    border-radius:50%;
+    box-shadow: 0 0 0  10vh #FBC02D;
 }
 
 .player-piece {
     background-color: #f44336;
-    height: 8.5vh;
-    width: 8.5vh;
+    height: 9vh;
+    width: 9vh;
+    border-radius: 50%;
 }
