@@ -59,45 +59,80 @@ body {
 .container .column {
     display: flex;
     flex-direction: column;
+    position:relative;
+    overflow:hidden;
 
+}
+
+.container .column::after {
+    height: 60vh;
+    width: 10vh;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: hidden;
+    background-color: #FBC02D;
+    transition: opacity 600ms;
+    opacity: 0.0;
+}
+
+.column:hover::after {
+    opacity: 0.2;
+    transition: opacity 200ms;
 }
 
 .cell {
     width:10vh;
     height:10vh;
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
-.cell::after {
+.cell::before {
     width:9vh;
     height:9vh;
     content:"";
     position:absolute;
     left:5%; top:5%;
     border-radius:50%;
+    cursor: pointer;
     box-shadow: 0 0 0  10vh #FBC02D;
+    z-index: 3;
 }
 
-
-.column .cell:hover:after {
+.column .cell::after {
+    width:9.5vh;
+    height:9.5vh;
+    content:"";
+    position:absolute;
+    left:.25vh; top:.25vh;
+    border-radius:50%;
     background-color: #FBC02D;
-    box-shadow: 0 0 0  10vh #FBC02D;
-    opacity: 0.5;
-    display: visible;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1000ms;
 }
 
-.column:hover .cell::after {
-    box-shadow: 0 0 0  10vh #FBC02D;
+.column .cell:hover::after {
+    opacity: 0.7;
+    transition: opacity 200ms;
 }
 
 .player-piece {
-    width: 9vh;
-    height: 9vh;
-    background-color: #f44336;
+    width: 9.5vh;
+    height: 9.5vh;
     border-radius: 50%;
+    z-index: 2;
+}
+
+.player-piece.red {
+    background-color: #f44336;
+}
+
+.player-piece.black {
+    background-color: #34495e;
 }
