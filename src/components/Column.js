@@ -5,9 +5,15 @@ import Cell from './Cell';
 class Column extends Component {
 
     render() {
+        let i = 0;
         const cells = [];
-        for (let i = 0; i < 6; i++) { cells.push(<Cell peice={i % 2 === 0} key={i} />) }
-
+        cells.push(<Cell key={++i} />);
+        cells.push(<Cell key={++i} />);
+        cells.push(<Cell key={++i} />);
+        cells.push(<Cell key={++i} />);
+        cells.push(<Cell key={++i} />);
+        cells.push(<Cell key={++i} />);
+        
         return(
             <div className="column">
                 {cells}

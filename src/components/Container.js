@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Column from './Column';
+// import Column from './Column';
 
 class Container extends Component {
+    static propTypes = {
+        Columns: PropTypes.array.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+    }
 
     render () {
-        const columns = [];
-        for (let i = 0; i < 7; i++) { columns.push(<Column key={i} />) }
 
         return (
             <div className="container">
                 <div className="container-top"></div>
                 <div className="container-body">
-                    {columns}
+                    {this.props.Columns}
                 </div>
                 <div className="container-bottom">Connect4</div>
             </div>
