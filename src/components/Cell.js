@@ -19,7 +19,9 @@ class Cell extends Component {
             : (null);
 
         return (
-            <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''}`} >
+            <div className="cell-parent">
+                <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''}`} >
+                </div>
                 {playerPiece}
             </div>
         );

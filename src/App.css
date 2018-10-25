@@ -87,51 +87,61 @@ body {
     transition: opacity 200ms;
 }
 
+.cell-parent {
+    position: relative;
+}
+
 .cell {
     width:10vh;
     height:10vh;
     position: relative;
     overflow: hidden;
-    display: flex;
+    visibility: visible;
     justify-content: center;
     align-items: center;
 }
 
-.cell::before {
+.cell::after {
     width:9vh;
     height:9vh;
     content:"";
-    position:absolute;
+    position: absolute;
     left:5%; top:5%;
     border-radius:50%;
     cursor: pointer;
+    visibility: visible;
     box-shadow: 0 0 0  10vh #FBC02D;
     z-index: 3;
 }
 
-.cell::after {
+.cell::before {
     width:9.5vh;
     height:9.5vh;
+    visibility: visible;
     content:"";
     position:absolute;
     left:.25vh; top:.25vh;
     border-radius:50%;
     background-color: #FBC02D;
     opacity: 0;
-    z-index: 1;
+    z-index: 3;
     transition: opacity 1000ms;
 }
 
-.column:hover .cell.glow::after {
+.column:hover .cell.glow::before {
     opacity: 0.8;
     transition: opacity 200ms;
 }
 
 .player-piece {
-    width: 9.5vh;
-    height: 9.5vh;
+    width: 10vh;
+    height: 10vh;
+    visibility: visible;
     border-radius: 50%;
     z-index: 2;
+    position: absolute;
+    left: 0%;
+    top: 0%;
 }
 
 .player-piece.red {
