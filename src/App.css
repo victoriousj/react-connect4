@@ -117,7 +117,7 @@ body {
     transition: opacity 1000ms;
 }
 
-.column .cell:hover::after {
+.column:hover .cell.glow::after {
     opacity: 0.7;
     transition: opacity 200ms;
 }
