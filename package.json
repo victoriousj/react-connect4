@@ -17,9 +17,17 @@
     "url": "https://github.com/victoriousj/react-min-via/issues"
   },
   "homepage": "https://github.com/victoriousj/react-connect4#readme",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

@@ -1,0 +1,1 @@
+export const CELL_SELECTION = 'CELL_SELECTION';
