@@ -14,13 +14,13 @@ class Cell extends Component {
     }
     
     render() {
+        const playerPiece = this.props.cellValue !== 0
+            ? (<div className={`player-piece ${this.props.cellValue === 1 ? `red` : `black`}`}></div>)
+            : (null);
+
         return (
             <div className="cell" onClick={() => this.props.cellSelection(this.props.rowIndex, this.props.columnIndex)}>
-                {
-                    this.props.cellValue !== 0
-                    ? (<div className={`player-piece ${this.props.cellValue === 1 ? `red` : `black`}`}></div>)
-                    : (null)
-                }
+                {playerPiece}
             </div>
         );
     }
