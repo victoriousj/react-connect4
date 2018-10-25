@@ -6,7 +6,7 @@ class Cell extends Component {
         rowIndex: PropTypes.number.isRequired,
         cellValue: PropTypes.number.isRequired,
         columnIndex: PropTypes.number.isRequired,
-        cellSelection: PropTypes.func.isRequired,
+        lowestFreeCell: PropTypes.bool.isRequired,
     }
 
     constructor(props) {
@@ -19,7 +19,7 @@ class Cell extends Component {
             : (null);
 
         return (
-            <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''}`} onClick={() => this.props.cellSelection(this.props.rowIndex, this.props.columnIndex)}>
+            <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''}`} >
                 {playerPiece}
             </div>
         );

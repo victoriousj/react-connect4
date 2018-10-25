@@ -78,7 +78,7 @@ body {
 }
 
 .column:hover::after {
-    opacity: 0.2;
+    opacity: 0.3;
     transition: opacity 200ms;
 }
 
@@ -104,7 +104,7 @@ body {
     z-index: 3;
 }
 
-.column .cell::after {
+.cell::after {
     width:9.5vh;
     height:9.5vh;
     content:"";
@@ -118,7 +118,7 @@ body {
 }
 
 .column:hover .cell.glow::after {
-    opacity: 0.7;
+    opacity: 0.8;
     transition: opacity 200ms;
 }
 

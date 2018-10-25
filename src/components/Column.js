@@ -11,15 +11,16 @@ class Column extends Component {
     };
 
     render() {
-        let lowestFreeCell = ([...this.props.columnValues].findIndex(cellValue => cellValue !== 0) -1);
+        let lowestFreeCell = ([...this.props.columnValues].findIndex((cellValue, i) => cellValue !== 0) -1);
+        // Initial value with no selected cells will be -2
         lowestFreeCell = lowestFreeCell === -2 ? 5: lowestFreeCell;
 
-        const cells = this.props.columnValues.map((cellValue, index) =>
-            <Cell key={index} cellValue={cellValue} cellSelection={this.props.cellSelection} columnIndex={this.props.columnIndex} rowIndex={index} lowestFreeCell={lowestFreeCell === index ? true : false} /> 
+        const cells = this.props.columnValues.map((cellValue, i) =>
+            <Cell key={i} cellValue={cellValue} columnIndex={this.props.columnIndex} rowIndex={i} lowestFreeCell={lowestFreeCell === i ? true : false} /> 
         );
 
         return(
-            <div className="column">
+            <div className="column" onClick={() => this.props.cellSelection(lowestFreeCell, this.props.columnIndex)}>
                 {cells}
             </div>
         )
