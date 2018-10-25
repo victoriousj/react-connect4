@@ -5,6 +5,7 @@ import Cell from './Cell';
 
 class Column extends Component {
     static propTypes = {
+        columnIndex: PropTypes.number.isRequired,
         columnValues: PropTypes.array.isRequired,
         cellSelection: PropTypes.func.isRequired,
 
@@ -16,7 +17,7 @@ class Column extends Component {
         lowestFreeCell = lowestFreeCell === -2 ? 5: lowestFreeCell;
 
         const cells = this.props.columnValues.map((cellValue, i) =>
-            <Cell key={i} cellValue={cellValue} columnIndex={this.props.columnIndex} rowIndex={i} lowestFreeCell={lowestFreeCell === i ? true : false} /> 
+            <Cell key={i} cellValue={cellValue} lowestFreeCell={lowestFreeCell === i ? true : false} /> 
         );
 
         return(

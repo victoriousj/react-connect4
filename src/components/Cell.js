@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 class Cell extends Component {
     static propTypes = {
-        rowIndex: PropTypes.number.isRequired,
         cellValue: PropTypes.number.isRequired,
-        columnIndex: PropTypes.number.isRequired,
         lowestFreeCell: PropTypes.bool.isRequired,
     }
 

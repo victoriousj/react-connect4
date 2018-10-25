@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import Column from './Column';
 
 class Container extends Component {
     static propTypes = {
