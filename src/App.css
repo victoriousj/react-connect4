@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-    width: 72.5vh;
+    width: 72vh;
     height: 70vh;
     margin: 10vh auto;
     display: flex;
@@ -29,8 +29,9 @@ body {
 }
 
 .container-body {
-    width: 72.5vh;
+    width: 72vh;
     display: flex;
+    overflow:hidden;
     flex-direction: row;
     justify-content: center;
     border-left: 1.5vh solid #FBC02D;
@@ -38,14 +39,14 @@ body {
 }
 
 .container-top {
-    width: 72.5vh;
+    width: 72vh;
     height: 2.5vh;
     border-radius: 2.5vh 2.5vh 0 0;
     background-color: #FBC02D;
 }
 
 .container-bottom {
-    width: 72.5vh;
+    width: 72vh;
     height: 10vh;
     color: #f44336;
     font-size: 5vh;
@@ -56,15 +57,19 @@ body {
     border-radius: 0 0 2.5vh 2.5vh;
 }
 
-.container .column {
+.column {
+    width: 10vh;
     display: flex;
     flex-direction: column;
     position:relative;
     overflow:hidden;
-
 }
 
-.container .column::after {
+.column:last-child {
+    width: 10vh;
+}
+
+.column::after {
     height: 60vh;
     width: 10vh;
     content: "";
