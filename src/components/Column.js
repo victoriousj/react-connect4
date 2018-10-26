@@ -20,7 +20,7 @@ class Column extends Component {
             <Cell key={i} cellValue={cellValue} lowestFreeCell={lowestFreeCell === i ? true : false} /> 
         );
 
-        return(
+        return (
             <div className="column" onClick={() => this.props.cellSelection(lowestFreeCell, this.props.columnIndex)}>
                 {cells}
             </div>
