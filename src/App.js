@@ -24,7 +24,10 @@ class App extends Component {
     };
 
     componentDidUpdate() {
-        Helpers.checkGameBoard(this.props.gameBoard);
+        const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
+        if (winningPieces) {
+            console.log(winningPieces);
+        }
     }
     
     render() { 
