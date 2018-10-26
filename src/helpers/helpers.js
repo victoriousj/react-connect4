@@ -14,11 +14,11 @@ export const checkGameBoard = gameBoard => {
     }
 
     // horizontal
-    for (let rowIndex = 5; rowIndex >= 5; rowIndex--) {
-        let row = gameBoard.map(column => column[rowIndex]);
+    for (let rowIndex = 5; rowIndex >= 0; rowIndex--) {
+        let row = gameBoard.map((column) => column[rowIndex]);
         
-        for (let cellIndex = 0; cellIndex <=3; cellIndex++) {
-            if (row[cellIndex] === 0) return;
+        for (let cellIndex = 0; cellIndex <= 3; cellIndex++) {
+            if (row[cellIndex] === 0) continue;
 
             if (areIdentical(row[cellIndex], row[cellIndex+1], row[cellIndex+2], row[cellIndex+3])) {
                 console.log('row four');
@@ -26,14 +26,39 @@ export const checkGameBoard = gameBoard => {
         }
     }
 
-    // diagonal:  
-    //  left - to - right: 0 - 3
-    //  bottom - top: 0 - 2
+    for (let diagonalGroupYIndex = 0; diagonalGroupYIndex <= 3; diagonalGroupYIndex++) {
+        for (let diagonalGroupXIndex = 0; diagonalGroupXIndex <= 2; diagonalGroupXIndex++) {
+            if (gameBoard[diagonalGroupYIndex][diagonalGroupXIndex] === 0) continue;
 
-    // diagonal up-right:
-    // for (let diagonalGroupIndex = 0; diagonalGroupIndex <= 2; diagonalGroupIndex++) {
-    //     let diagonalGroup = 
-    // }
+            let diagonalGroup = [
+                gameBoard[diagonalGroupYIndex][diagonalGroupXIndex],
+                gameBoard[diagonalGroupYIndex+1][diagonalGroupXIndex+1],
+                gameBoard[diagonalGroupYIndex+2][diagonalGroupXIndex+2],
+                gameBoard[diagonalGroupYIndex+3][diagonalGroupXIndex+3]
+            ];
+
+            if (areIdentical(diagonalGroup[0],diagonalGroup[1],diagonalGroup[2],diagonalGroup[3])) {
+                console.log('down-to-the-left');
+            }
+        }
+    }
+
+    for (let diagonalGroupYIndex = 0; diagonalGroupYIndex <= 3; diagonalGroupYIndex++) {
+        for (let diagonalGroupXIndex = 6; diagonalGroupXIndex >= 0; diagonalGroupXIndex--) {
+            if (gameBoard[diagonalGroupYIndex][diagonalGroupXIndex] === 0) continue;
+
+            let diagonalGroup = [
+                gameBoard[diagonalGroupYIndex]  [diagonalGroupXIndex],
+                gameBoard[diagonalGroupYIndex+1][diagonalGroupXIndex-1],
+                gameBoard[diagonalGroupYIndex+2][diagonalGroupXIndex-2],
+                gameBoard[diagonalGroupYIndex+3][diagonalGroupXIndex-3]
+            ];
+
+            if (areIdentical(diagonalGroup[0],diagonalGroup[1],diagonalGroup[2],diagonalGroup[3])) {
+                console.log('up-to-the-right');
+            }
+        }
+    }
 };
 
-export const areIdentical = (a,b,c,d) => a === b && a === c && a === d;
+export const areIdentical = (...arr) => arr.every(v => v === arr[0])
