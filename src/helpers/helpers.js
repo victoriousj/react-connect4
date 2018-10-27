@@ -15,9 +15,17 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(verticalGroup)) {
+                let winningPeices = [
+                    {"column": columnIndex, "row": cellIndex+0},
+                    {"column": columnIndex, "row": cellIndex+1},
+                    {"column": columnIndex, "row": cellIndex+2},
+                    {"column": columnIndex, "row": cellIndex+3}
+                ]
+                console.log(winningPeices);
+
                 return ({
                     type: 'column', 
-                    cells: verticalGroup
+                    cells: winningPeices
                 });
             }
         }
@@ -25,22 +33,29 @@ export const checkGameBoard = gameBoard => {
 
     // horizontal
     for (let rowIndex = 5; rowIndex >= 0; rowIndex--) {
-        let row = gameBoard.map((column) => column[rowIndex]);
+        let rows = gameBoard.map((column, i) => [column[rowIndex], i]);
         
         for (let cellIndex = 0; cellIndex <= 3; cellIndex++) {
-            if (row[cellIndex] === 0) continue;
+            if (rows[cellIndex][0] === 0) continue;
 
             let horizontalGroup = [
-                row[cellIndex], 
-                row[cellIndex+1], 
-                row[cellIndex+2], 
-                row[cellIndex+3]
+                rows[cellIndex][0], 
+                rows[cellIndex+1][0], 
+                rows[cellIndex+2][0], 
+                rows[cellIndex+3][0]
             ];
 
             if (areIdentical(horizontalGroup)) {
+                let winningPeices = [
+                    {"column": rows[cellIndex+0][1], "row": rowIndex}, 
+                    {"column": rows[cellIndex+1][1], "row": rowIndex}, 
+                    {"column": rows[cellIndex+2][1], "row": rowIndex}, 
+                    {"column": rows[cellIndex+3][1], "row": rowIndex}
+                ]
+                
                 return ({
                     type: 'row', 
-                    cells: horizontalGroup
+                    cells: winningPeices
                 });
             }
         }
@@ -58,9 +73,16 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(diagonalGroup)) {
+                let winningPeices = [
+                    {"column": diagonalGroupYIndex+0, "row": diagonalGroupXIndex+0},
+                    {"column": diagonalGroupYIndex+1, "row": diagonalGroupXIndex+1},
+                    {"column": diagonalGroupYIndex+2, "row": diagonalGroupXIndex+2},
+                    {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex+3}
+                ];
+
                 return ({
                     type: 'diagonal', 
-                    cells: diagonalGroup
+                    cells: winningPeices
                 });
             }
         }
@@ -78,9 +100,16 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(diagonalGroup)) {
+                let winningPeices = [
+                    {"column": diagonalGroupYIndex+0, "row": diagonalGroupXIndex-0},
+                    {"column": diagonalGroupYIndex+1, "row": diagonalGroupXIndex-1},
+                    {"column": diagonalGroupYIndex+2, "row": diagonalGroupXIndex-2},
+                    {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex-3},
+                ];
+                
                 return ({ 
                     type: 'diagonal', 
-                    cells: diagonalGroup 
+                    cells: winningPeices 
                 });
             }
         }

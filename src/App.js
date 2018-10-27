@@ -19,21 +19,32 @@ class App extends Component {
         super(props);
         
         const { dispatch } = props;
+        this.dispatch = dispatch;
 
+        this.endGame = bindActionCreators(GameInteractionCreators.endGame, dispatch);
         this.cellSelection = bindActionCreators(GameInteractionCreators.cellSelection, dispatch);
     };
 
     componentDidUpdate() {
         const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
-        if (winningPieces) {
-            console.log(winningPieces);
+        if (winningPieces && this.props.isPlaying) {
+            this.endGame();
+            this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces.cells));
         }
     }
     
     render() { 
         let columns = this.props.gameBoard.map((columnValues, index) =>
-            <Column key={index} currentPlayer={this.props.currentPlayer} cellSelection={this.cellSelection} columnIndex={index} columnValues={columnValues} />
+            <Column 
+                key={index} 
+                columnIndex={index} 
+                columnValues={columnValues} 
+                isPlaying={this.props.isPlaying} 
+                cellSelection={this.cellSelection} 
+                currentPlayer={this.props.currentPlayer} 
+                winningPieces={this.props.winningPieces}/>
         );
+
         
         return (
             <div className = "App">
@@ -46,7 +57,9 @@ class App extends Component {
 const mapStateToProps = state => (
     {
         gameBoard: state.gameBoard,
+        isPlaying: state.isPlaying,
         currentPlayer: state.currentPlayer,
+        winningPieces: state.winningPieces,
     }
 );
 

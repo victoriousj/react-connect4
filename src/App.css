@@ -134,12 +134,12 @@ body {
 
 .column:hover .cell.red.glow::before {
     opacity: 1;
-    background-color: #f44336;
+    background-color: #e57373;
 }
 
 .column:hover .cell.black.glow::before {
     opacity: 1;
-    background-color: #34495e;
+    background-color: #757575;
 }
 
 .player-piece {
@@ -159,4 +159,8 @@ body {
 
 .player-piece.black {
     background-color: #34495e;
+}
+
+.winning-piece {
+    background-color: white !important;
 }

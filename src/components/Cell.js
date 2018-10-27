@@ -13,10 +13,11 @@ class Cell extends Component {
     
     render() {
         const playerPiece = this.props.cellValue !== 0
-            ? (<div className={`player-piece ${this.props.cellValue === 1 ? `red` : `black`}`}></div>)
+            ? (<div className={`player-piece ${this.props.cellValue === 1 ? `red` : `black`} ${this.props.winningPiece ? 'winning-piece': ''}`}></div>)
             : (null);
 
         return (
+            // <div className="cell-parent">
             <div className="cell-parent">
                 <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''} ${this.props.currentPlayer === 1 ? `red` : `black`}`} >
                 </div>

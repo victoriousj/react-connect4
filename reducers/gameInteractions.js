@@ -17,7 +17,9 @@ const initialState = {
         [ 0, 0, 0, 0, 0, 0 ],
     ],
 
-    isPlaying: false,
+    winningPieces: [],
+
+    isPlaying: true,
 }
 
 export default function GameInteractions(state=initialState, action) {
@@ -25,6 +27,8 @@ export default function GameInteractions(state=initialState, action) {
     switch(action.type) {
 
         case GameInteractionActionTypes.CELL_SELECTION: {
+            if (!state.isPlaying) return state;
+
             let newGameBoard = [...state.gameBoard];
             newGameBoard[action.columnIndex][action.rowIndex] = state.currentPlayer;
             
@@ -36,6 +40,22 @@ export default function GameInteractions(state=initialState, action) {
                 currentPlayer: nextPlayer
             };
         };
+
+        case GameInteractionActionTypes.END_GAME: {
+
+            return {
+                ...state,
+                isPlaying: false,
+            }
+        }
+
+        case GameInteractionActionTypes.REGISTER_GAME_WINNING_PEICES: {
+
+            return {
+                ...state,
+                winningPieces: action.winningPieces
+            }
+        }
 
         default: 
             return state;
