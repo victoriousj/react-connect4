@@ -34,8 +34,8 @@ body {
     overflow:hidden;
     flex-direction: row;
     justify-content: center;
-    border-left: 1.5vh solid #FBC02D;
-    border-right: 1.5vh solid #FBC02D;
+    border-left: 1.25vh solid #FBC02D;
+    border-right: 1.25vh solid #FBC02D;
 }
 
 .container-top {
@@ -77,13 +77,13 @@ body {
     top: 0;
     left: 0;
     display: hidden;
-    background-color: #FBC02D;
+    background-color: #3498db;
     transition: opacity 600ms;
     opacity: 0.0;
 }
 
 .column:hover::after {
-    opacity: 0.3;
+    opacity: 1;
     transition: opacity 200ms;
 }
 
@@ -122,15 +122,24 @@ body {
     position:absolute;
     left:.25vh; top:.25vh;
     border-radius:50%;
-    background-color: #FBC02D;
+    background-color: #2980b9;
     opacity: 0;
     z-index: 3;
-    transition: opacity 1000ms;
 }
 
 .column:hover .cell.glow::before {
-    opacity: 0.8;
+    opacity: 1;
     transition: opacity 200ms;
+}
+
+.column:hover .cell.red.glow::before {
+    opacity: 1;
+    background-color: #f44336;
+}
+
+.column:hover .cell.black.glow::before {
+    opacity: 1;
+    background-color: #34495e;
 }
 
 .player-piece {

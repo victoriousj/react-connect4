@@ -32,7 +32,7 @@ class App extends Component {
     
     render() { 
         let columns = this.props.gameBoard.map((columnValues, index) =>
-            <Column key={index} cellSelection={this.cellSelection} columnIndex={index} columnValues={columnValues} />
+            <Column key={index} currentPlayer={this.props.currentPlayer} cellSelection={this.cellSelection} columnIndex={index} columnValues={columnValues} />
         );
         
         return (
@@ -46,6 +46,7 @@ class App extends Component {
 const mapStateToProps = state => (
     {
         gameBoard: state.gameBoard,
+        currentPlayer: state.currentPlayer,
     }
 );
 

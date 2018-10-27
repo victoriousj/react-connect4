@@ -18,7 +18,7 @@ class Cell extends Component {
 
         return (
             <div className="cell-parent">
-                <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''}`} >
+                <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''} ${this.props.currentPlayer === 1 ? `red` : `black`}`} >
                 </div>
                 {playerPiece}
             </div>

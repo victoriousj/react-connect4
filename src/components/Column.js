@@ -17,7 +17,7 @@ class Column extends Component {
         lowestFreeCell = lowestFreeCell === -2 ? 5: lowestFreeCell;
 
         const cells = this.props.columnValues.map((cellValue, i) =>
-            <Cell key={i} cellValue={cellValue} lowestFreeCell={lowestFreeCell === i ? true : false} /> 
+            <Cell key={i} cellValue={cellValue} currentPlayer={this.props.currentPlayer} lowestFreeCell={lowestFreeCell === i ? true : false} /> 
         );
 
         return (
