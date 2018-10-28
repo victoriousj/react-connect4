@@ -21,12 +21,11 @@ export const checkGameBoard = gameBoard => {
                     {"column": columnIndex, "row": cellIndex+2},
                     {"column": columnIndex, "row": cellIndex+3}
                 ]
-                console.log(winningPeices);
 
-                return ({
+                return {
                     type: 'column', 
                     cells: winningPeices
-                });
+                };
             }
         }
     }
@@ -39,7 +38,7 @@ export const checkGameBoard = gameBoard => {
             if (rows[cellIndex][0] === 0) continue;
 
             let horizontalGroup = [
-                rows[cellIndex][0], 
+                rows[cellIndex+0][0], 
                 rows[cellIndex+1][0], 
                 rows[cellIndex+2][0], 
                 rows[cellIndex+3][0]
@@ -53,10 +52,10 @@ export const checkGameBoard = gameBoard => {
                     {"column": rows[cellIndex+3][1], "row": rowIndex}
                 ]
                 
-                return ({
+                return {
                     type: 'row', 
                     cells: winningPeices
-                });
+                };
             }
         }
     }
@@ -80,10 +79,10 @@ export const checkGameBoard = gameBoard => {
                     {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex+3}
                 ];
 
-                return ({
+                return {
                     type: 'diagonal', 
                     cells: winningPeices
-                });
+                };
             }
         }
     }
@@ -107,10 +106,10 @@ export const checkGameBoard = gameBoard => {
                     {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex-3},
                 ];
                 
-                return ({ 
+                return { 
                     type: 'diagonal', 
                     cells: winningPeices 
-                });
+                };
             }
         }
     }

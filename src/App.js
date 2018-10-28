@@ -13,6 +13,9 @@ import * as GameInteractionCreators from '../actions/gameInteractions';
 class App extends Component {
     static propTypes = {
         gameBoard: PropTypes.array.isRequired,
+        isPlaying: PropTypes.bool.isRequired,
+        winningPieces: PropTypes.array.isRequired,
+        currentPlayer: PropTypes.number.isRequired,
     };
 
     constructor(props) {
@@ -26,10 +29,12 @@ class App extends Component {
     };
 
     componentDidUpdate() {
-        const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
-        if (winningPieces && this.props.isPlaying) {
-            this.endGame();
-            this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces.cells));
+        if (this.props.isPlaying) {
+            const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
+            if (winningPieces) {
+                this.endGame();
+                this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces.cells));
+            }
         }
     }
     
@@ -37,12 +42,12 @@ class App extends Component {
         let columns = this.props.gameBoard.map((columnValues, index) =>
             <Column 
                 key={index} 
-                columnIndex={index} 
-                columnValues={columnValues} 
-                isPlaying={this.props.isPlaying} 
-                cellSelection={this.cellSelection} 
-                currentPlayer={this.props.currentPlayer} 
-                winningPieces={this.props.winningPieces}/>
+                columnIndex=    {index} 
+                columnValues=   {columnValues} 
+                isPlaying=      {this.props.isPlaying} 
+                cellSelection=  {this.cellSelection} 
+                currentPlayer=  {this.props.currentPlayer} 
+                winningPieces=  {this.props.winningPieces}/>
         );
 
         

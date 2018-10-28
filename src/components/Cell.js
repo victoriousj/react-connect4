@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 class Cell extends Component {
     static propTypes = {
         cellValue: PropTypes.number.isRequired,
+        winningPiece: PropTypes.bool.isRequired,
         lowestFreeCell: PropTypes.bool.isRequired,
+        currentPlayer: PropTypes.number.isRequired,
     }
 
     constructor(props) {

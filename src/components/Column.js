@@ -10,20 +10,18 @@ class Column extends Component {
         columnValues: PropTypes.array.isRequired,
         cellSelection: PropTypes.func.isRequired,
         winningPieces: PropTypes.array.isRequired,
+        currentPlayer: PropTypes.number.isRequired,
     };
 
     render() {
-        let hasWinningPieces = false;
         let lowestFreeCell = ([...this.props.columnValues].findIndex(cellValue => cellValue !== 0) -1);
-        if (this.props.winningPieces.length > 0) {
-            hasWinningPieces = this.props.winningPieces.some(winningPeice => winningPeice.column === this.props.columnIndex);
-
-            if (hasWinningPieces) {
-                console.log(hasWinningPieces);
-            }
-        }
         // Initial value with no selected cells will be -2
         lowestFreeCell = lowestFreeCell === -2 ? 5: lowestFreeCell;
+        
+        let hasWinningPieces = false;
+        if (this.props.winningPieces.length > 0) {
+            hasWinningPieces = this.props.winningPieces.some(winningPeice => winningPeice.column === this.props.columnIndex);
+        }
 
         const cells = this.props.columnValues.map((cellValue, i) =>
             <Cell 
@@ -33,7 +31,14 @@ class Column extends Component {
             columnIndex={this.props.columnIndex}
             currentPlayer={this.props.currentPlayer} 
             lowestFreeCell={this.props.isPlaying && lowestFreeCell === i ? true : false} 
-            winningPiece={hasWinningPieces ? this.props.winningPieces.some(winningPiece => winningPiece.row === i && this.props.columnIndex === winningPiece.column) ? true: false: false} /> 
+            winningPiece={
+                hasWinningPieces 
+                    ? this.props.winningPieces.some(winningPiece => 
+                        winningPiece.row === i && 
+                        this.props.columnIndex === winningPiece.column) 
+                            ? true
+                                : false: false} 
+            /> 
         );
 
         return (
