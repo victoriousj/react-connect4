@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 
-class Container extends Component {
+class Container extends React.Component {
     static propTypes = {
         Columns: PropTypes.array.isRequired
     }

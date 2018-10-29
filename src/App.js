@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import Column from './components/Column';
 import * as Helpers from './helpers/helpers';
@@ -9,7 +9,7 @@ import Container from './components/Container';
 import * as GameInteractionCreators from '../actions/gameInteractions';
 
 
-class App extends Component {
+class App extends React.Component {
     static propTypes = {
         isPlaying: PropTypes.bool.isRequired,
         gameBoard: PropTypes.array.isRequired,

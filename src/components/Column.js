@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import Cell from './Cell';
 
-class Column extends Component {
+class Column extends React.Component {
     static propTypes = {
         isPlaying: PropTypes.bool.isRequired,
         columnIndex: PropTypes.number.isRequired,
