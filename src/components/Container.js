@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 
-class Container extends React.Component {
+export default class Container extends React.Component {
     static propTypes = {
         Columns: PropTypes.array.isRequired
     }
@@ -24,5 +24,3 @@ class Container extends React.Component {
         )
     }
 } 
-
-export default Container;

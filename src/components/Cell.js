@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-class Cell extends React.Component {
+export default class Cell extends React.Component {
     static propTypes = {
         cellValue: PropTypes.number.isRequired,
         winningPiece: PropTypes.bool.isRequired,
@@ -27,5 +27,3 @@ class Cell extends React.Component {
         );
     }
 }
-
-export default Cell;

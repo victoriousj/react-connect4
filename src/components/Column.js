@@ -3,7 +3,7 @@ import React from 'react';
 
 import Cell from './Cell';
 
-class Column extends React.Component {
+export default class Column extends React.Component {
     static propTypes = {
         isPlaying: PropTypes.bool.isRequired,
         columnIndex: PropTypes.number.isRequired,
@@ -33,11 +33,12 @@ class Column extends React.Component {
             lowestFreeCell={this.props.isPlaying && lowestFreeCell === i ? true : false} 
             winningPiece={
                 hasWinningPieces 
-                    ? this.props.winningPieces.some(winningPiece => 
-                        winningPiece.row === i && 
-                        this.props.columnIndex === winningPiece.column) 
+                    ? this.props.winningPieces.some(cell => 
+                        cell.row === i && 
+                        cell.column === this.props.columnIndex) 
                             ? true
-                                : false: false} 
+                            : false
+                    : false} 
             /> 
         );
 
@@ -48,5 +49,3 @@ class Column extends React.Component {
         )
     }
 }
-
-export default Column;
