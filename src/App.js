@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import "./App.css";
 import Column from './components/Column';
 import * as Helpers from './helpers/helpers';
 import Container from './components/Container';
@@ -12,8 +11,8 @@ import * as GameInteractionCreators from '../actions/gameInteractions';
 
 class App extends Component {
     static propTypes = {
-        gameBoard: PropTypes.array.isRequired,
         isPlaying: PropTypes.bool.isRequired,
+        gameBoard: PropTypes.array.isRequired,
         winningPieces: PropTypes.array.isRequired,
         currentPlayer: PropTypes.number.isRequired,
     };
@@ -33,7 +32,7 @@ class App extends Component {
             const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
             if (winningPieces) {
                 this.endGame();
-                this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces.cells));
+                this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces));
             }
         }
     }
@@ -41,11 +40,11 @@ class App extends Component {
     render() { 
         let columns = this.props.gameBoard.map((columnValues, index) =>
             <Column 
-                key={index} 
+                key=            {index} 
                 columnIndex=    {index} 
                 columnValues=   {columnValues} 
-                isPlaying=      {this.props.isPlaying} 
                 cellSelection=  {this.cellSelection} 
+                isPlaying=      {this.props.isPlaying} 
                 currentPlayer=  {this.props.currentPlayer} 
                 winningPieces=  {this.props.winningPieces}/>
         );

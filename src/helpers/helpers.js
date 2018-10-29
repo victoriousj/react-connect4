@@ -22,10 +22,7 @@ export const checkGameBoard = gameBoard => {
                     {"column": columnIndex, "row": cellIndex+3}
                 ]
 
-                return {
-                    type: 'column', 
-                    cells: winningPeices
-                };
+                return winningPeices;
             }
         }
     }
@@ -52,14 +49,12 @@ export const checkGameBoard = gameBoard => {
                     {"column": rows[cellIndex+3][1], "row": rowIndex}
                 ]
                 
-                return {
-                    type: 'row', 
-                    cells: winningPeices
-                };
+                return winningPeices;
             }
         }
     }
 
+    // diagonal, up-to-the-right
     for (let diagonalGroupYIndex = 0; diagonalGroupYIndex <= 3; diagonalGroupYIndex++) {
         for (let diagonalGroupXIndex = 0; diagonalGroupXIndex <= 2; diagonalGroupXIndex++) {
             if (gameBoard[diagonalGroupYIndex][diagonalGroupXIndex] === 0) continue;
@@ -79,14 +74,13 @@ export const checkGameBoard = gameBoard => {
                     {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex+3}
                 ];
 
-                return {
-                    type: 'diagonal', 
-                    cells: winningPeices
-                };
+                return winningPeices;
+
             }
         }
     }
 
+    // diagonal down-to-the-right
     for (let diagonalGroupYIndex = 0; diagonalGroupYIndex <= 3; diagonalGroupYIndex++) {
         for (let diagonalGroupXIndex = 6; diagonalGroupXIndex >= 0; diagonalGroupXIndex--) {
             if (gameBoard[diagonalGroupYIndex][diagonalGroupXIndex] === 0) continue;
@@ -106,10 +100,7 @@ export const checkGameBoard = gameBoard => {
                     {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex-3},
                 ];
                 
-                return { 
-                    type: 'diagonal', 
-                    cells: winningPeices 
-                };
+                return winningPeices
             }
         }
     }
