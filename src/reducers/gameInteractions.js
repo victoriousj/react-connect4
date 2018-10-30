@@ -58,6 +58,8 @@ export default function GameInteractions(state=initialState, action) {
         }
 
         case GameInteractionActionTypes.INC_TIMER: {
+            if (!state.isPlaying) return state;
+
             state = state.currentPlayer === 1 
                 ? timePlayerOneTimer(state)
                 : timePlayerTwoTimer(state);
@@ -74,7 +76,6 @@ export default function GameInteractions(state=initialState, action) {
 
 const timePlayerOneTimer = (state) => {
     let playerTime = state.playerOneTime;
-
     let newPlayerTime = ++playerTime;
 
     return {
@@ -85,7 +86,6 @@ const timePlayerOneTimer = (state) => {
 
 const timePlayerTwoTimer = (state) => {
     let playerTime = state.playerTwoTime;
-
     let newPlayerTime = ++playerTime;
 
     return {

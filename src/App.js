@@ -55,8 +55,8 @@ class App extends React.Component {
         return (
             <div className = "App">
                 <div className="playclocks">
-                    <PlayClock player={1} incTimer={this.incTimer}time={this.props.playerOneTime} isPlaying={this.props.isPlaying} currentPlayer={this.props.currentPlayer}/>
-                    <PlayClock player={2} incTimer={this.incTimer} time={this.props.playerTwoTime} isPlaying={this.props.isPlaying} currentPlayer={this.props.currentPlayer} />
+                    <PlayClock player={1} incTimer={this.incTimer} time={this.props.playerOneTime} currentPlayer={this.props.currentPlayer}/>
+                    <PlayClock player={2} incTimer={this.incTimer} time={this.props.playerTwoTime} currentPlayer={this.props.currentPlayer} />
                 </div>
                 <Container Columns={columns} />
             </div>

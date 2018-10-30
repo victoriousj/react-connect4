@@ -7,7 +7,7 @@ class PlayClock extends React.Component {
     }
 
     onTick = () => {
-        if (this.props.isPlaying && this.props.currentPlayer === this.props.player) {
+        if (this.props.currentPlayer === this.props.player) {
             this.props.incTimer();
         }
     }
