@@ -6,7 +6,7 @@ import React from 'react';
 import Column from './components/Column';
 import * as Helpers from './helpers/helpers';
 import Container from './components/Container';
-import * as GameInteractionCreators from '../actions/gameInteractions';
+import * as GameInteractionCreators from './actions/gameInteractions';
 
 
 class App extends React.Component {

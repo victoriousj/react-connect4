@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 import "./App.css";
 import App from './App';
-import GameInteractionReducer from '../reducers/gameInteractions';
+import GameInteractionReducer from './reducers/gameInteractions';
 
 
 const store = createStore(
