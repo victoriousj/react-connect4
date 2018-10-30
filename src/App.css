@@ -164,3 +164,35 @@ body {
 .winning-piece {
     background-color: white !important;
 }
+
+
+
+.playclocks {
+    display:flex;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.playclock {
+    padding: 15px 10px 5px 10px;
+    margin: -5px -10px -5px 10px;
+    background: rgba(52,73,94, 0.2);
+    color: white;
+    border-radius: 1vh;
+    width: 20vh;
+    display: inline-block;
+  }
+  
+    .playclock-time {
+      font-family: monospace;
+      font-size: 2em;
+    }
+  
+    .playclock h2 {
+      font-size: .6em;
+      margin: 0;
+      font-weight: normal;
+      letter-spacing: 2px;
+    }

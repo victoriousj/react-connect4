@@ -6,6 +6,7 @@ import React from 'react';
 import Column from './components/Column';
 import * as Helpers from './helpers/helpers';
 import Container from './components/Container';
+import PlayClock from './components/PlayClock';
 import * as GameInteractionCreators from './actions/gameInteractions';
 
 
@@ -24,6 +25,7 @@ class App extends React.Component {
         this.dispatch = dispatch;
 
         this.endGame = bindActionCreators(GameInteractionCreators.endGame, dispatch);
+        this.incTimer = bindActionCreators(GameInteractionCreators.incTimer, dispatch);
         this.cellSelection = bindActionCreators(GameInteractionCreators.cellSelection, dispatch);
     };
 
@@ -52,6 +54,10 @@ class App extends React.Component {
         
         return (
             <div className = "App">
+                <div className="playclocks">
+                    <PlayClock player={1} incTimer={this.incTimer}time={this.props.playerOneTime} isPlaying={this.props.isPlaying} currentPlayer={this.props.currentPlayer}/>
+                    <PlayClock player={2} incTimer={this.incTimer} time={this.props.playerTwoTime} isPlaying={this.props.isPlaying} currentPlayer={this.props.currentPlayer} />
+                </div>
                 <Container Columns={columns} />
             </div>
         );
@@ -64,6 +70,8 @@ const mapStateToProps = state => (
         isPlaying: state.isPlaying,
         currentPlayer: state.currentPlayer,
         winningPieces: state.winningPieces,
+        playerOneTime: state.playerOneTime,
+        playerTwoTime: state.playerTwoTime,
     }
 );
 

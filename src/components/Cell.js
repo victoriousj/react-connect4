@@ -15,7 +15,10 @@ export default class Cell extends React.Component {
     
     render() {
         const playerPiece = this.props.cellValue !== 0
-            ? (<div className={`player-piece ${this.props.cellValue === 1 ? `red` : `black`} ${this.props.winningPiece ? 'winning-piece': ''}`}></div>)
+            ? (
+            <div className="">
+                <div className={`peice-overlay player-piece ${this.props.cellValue === 1 ? `red` : `black`} ${this.props.winningPiece ? 'winning-piece': ''}`}></div>
+            </div>)
             : (null);
 
         return (
