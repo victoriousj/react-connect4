@@ -196,3 +196,23 @@ body {
       font-weight: normal;
       letter-spacing: 2px;
     }
+
+
+
+    .slide-enter {
+        transform: translateY(-50vh);
+      }
+      
+      .slide-enter.slide-enter-active {
+        transform: translateY(0vh);
+        transition: all 500ms ease-in;
+      }
+      
+      .slide-leave {
+        opacity: 1;
+      }
+      
+      .slide-leave.slide-leave-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+      }

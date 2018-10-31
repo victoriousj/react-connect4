@@ -1,3 +1,4 @@
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -15,17 +16,17 @@ export default class Cell extends React.Component {
     
     render() {
         const playerPiece = this.props.cellValue !== 0
-            ? (
-            <div className="">
-                <div className={`peice-overlay player-piece ${this.props.cellValue === 1 ? `red` : `black`} ${this.props.winningPiece ? 'winning-piece': ''}`}></div>
-            </div>)
+            ? (<div className={`peice-overlay player-piece ${this.props.cellValue === 1 ? `red` : `black`} ${this.props.winningPiece ? 'winning-piece': ''}`}></div>)
             : (null);
 
         return (
             <div className="cell-parent">
                 <div className={`cell ${this.props.lowestFreeCell ? 'glow' : ''} ${this.props.currentPlayer === 1 ? `red` : `black`}`} >
                 </div>
-                {playerPiece}
+                <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+                    {playerPiece}
+                </ReactCSSTransitionGroup>
+
             </div>
         );
     }
