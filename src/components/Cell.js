@@ -26,7 +26,6 @@ export default class Cell extends React.Component {
                 <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
                     {playerPiece}
                 </ReactCSSTransitionGroup>
-
             </div>
         );
     }
