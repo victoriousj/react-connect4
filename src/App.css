@@ -21,12 +21,12 @@ body {
 .container {
     width: 72vh;
     height: 70vh;
-    margin: 10vh auto;
     display: flex;
-	align-items: center;
-	justify-content: center;
 	flex-wrap: wrap;
+    margin: 10vh auto;
+	align-items: center;
 	flex-direction: row;
+	justify-content: center;
 }
 
 
@@ -44,21 +44,21 @@ body {
 .container-top {
     width: 72vh;
     height: 2.5vh;
-    border-radius: 2.5vh 2.5vh 0 0;
     background-color: #FBC02D;
+    border-radius: 2.5vh 2.5vh 0 0;
 }
 
 
 .container-bottom {
     width: 72vh;
     height: 10vh;
-    color: #f44336;
     font-size: 5vh;
+    color: #f44336;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Lilita One', monospace;
     background-color: #FBC02D;
     border-radius: 0 0 2.5vh 2.5vh;
+    font-family: 'Lilita One', monospace;
 }
 
 
@@ -70,62 +70,63 @@ body {
 .cell {
     width:10vh;
     height:10vh;
-    position: relative;
     overflow: hidden;
+    position: relative;
     visibility: visible;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
     .cell::after {
+        top:5%;
+        left:5%; 
         width:9vh;
+        z-index: 3;
         height:9vh;
         content:"";
-        position: absolute;
-        left:5%; top:5%;
-        border-radius:50%;
         cursor: pointer;
+        border-radius:50%;
+        position: absolute;
         visibility: visible;
         box-shadow: 0 0 0  10vh #FBC02D;
-        z-index: 3;
     }
     .cell::before {
-        width:9.5vh;
-        height:9.5vh;
-        visibility: visible;
+        top:.25vh;
+        left:.25vh; 
         content:"";
-        position:absolute;
-        left:.25vh; top:.25vh;
-        border-radius:50%;
-        background-color: #2980b9;
         opacity: 0;
         z-index: 3;
+        width:9.5vh;
+        height:9.5vh;
+        border-radius:50%;
+        position:absolute;
+        visibility: visible;
+        background-color: #2980b9;
     }
 
 .column {
     width: 10vh;
     display: flex;
-    flex-direction: column;
-    position:relative;
     overflow:hidden;
+    position:relative;
+    flex-direction: column;
 }
     .column::after {
-        height: 60vh;
-        width: 10vh;
-        content: "";
-        position: absolute;
         top: 0;
         left: 0;
-        display: hidden;
-        background-color: #3498db;
-        transition: opacity 600ms;
+        content: "";
+        width: 10vh;
+        height: 60vh;
         opacity: 0.0;
+        display: hidden;
+        position: absolute;
+        transition: opacity 600ms;
+        background-color: #3498db;
     }
     .column:hover::after {
         opacity: 1;
         transition: opacity 200ms;
     }
     .column:hover .cell.glow::before {
-        opacity: 1;
         transition: opacity 200ms;
     }
     .column:hover .cell.red.glow::before {
@@ -139,14 +140,14 @@ body {
 
 
 .player-piece {
+    top: 0%;
+    left: 0%;
+    z-index: 2;
     width: 10vh;
     height: 10vh;
-    visibility: visible;
     border-radius: 50%;
-    z-index: 2;
     position: absolute;
-    left: 0%;
-    top: 0%;
+    visibility: visible;
 }
     .player-piece.red {
         background-color: #f44336;
@@ -160,28 +161,28 @@ body {
 
 
 .playclocks {
-    display:flex;
     width: 50%;
-    text-align: center;
+    display:flex;
     margin: 0 auto;
+    text-align: center;
     justify-content: space-around;
 }
     .playclock {
+        width: 20vh;
+        color: white;
+        border-radius: 1vh;
+        display: inline-block;
         padding: 15px 10px 5px 10px;
         margin: -5px -10px -5px 10px;
         background: rgba(52,73,94, 0.2);
-        color: white;
-        border-radius: 1vh;
-        width: 20vh;
-        display: inline-block;
     }
     .playclock-time {
+        font-size: 2em;
       font-family: monospace;
-      font-size: 2em;
     }
     .playclock h2 {
+    margin: 0;
       font-size: .6em;
-      margin: 0;
       font-weight: normal;
       letter-spacing: 2px;
     }
@@ -191,6 +192,6 @@ body {
 }
     .slide-enter.slide-enter-active {
         transform: translateY(0vh);
-        transition: all 500ms ease-in;
+        transition: all 500ms;
     }
       

@@ -32,6 +32,7 @@ class App extends React.Component {
     componentDidUpdate() {
         if (this.props.isPlaying) {
             const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
+            console.log(winningPieces);
             if (winningPieces) {
                 this.endGame();
                 this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces));

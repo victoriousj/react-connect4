@@ -1,5 +1,5 @@
 export const checkGameBoard = gameBoard => {
-    
+    let winningPeices = [];
     // vertical
     for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
         let column = gameBoard[columnIndex];
@@ -15,14 +15,12 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(verticalGroup)) {
-                let winningPeices = [
+                winningPeices = [
                     {"column": columnIndex, "row": cellIndex+0},
                     {"column": columnIndex, "row": cellIndex+1},
                     {"column": columnIndex, "row": cellIndex+2},
                     {"column": columnIndex, "row": cellIndex+3}
                 ]
-
-                return winningPeices;
             }
         }
     }
@@ -42,14 +40,13 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(horizontalGroup)) {
-                let winningPeices = [
+                winningPeices = [
+                    ...winningPeices,
                     {"column": rows[cellIndex+0][1], "row": rowIndex}, 
                     {"column": rows[cellIndex+1][1], "row": rowIndex}, 
                     {"column": rows[cellIndex+2][1], "row": rowIndex}, 
                     {"column": rows[cellIndex+3][1], "row": rowIndex}
                 ]
-                
-                return winningPeices;
             }
         }
     }
@@ -67,15 +64,13 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(diagonalGroup)) {
-                let winningPeices = [
+                winningPeices = [
+                    ...winningPeices,
                     {"column": diagonalGroupYIndex+0, "row": diagonalGroupXIndex+0},
                     {"column": diagonalGroupYIndex+1, "row": diagonalGroupXIndex+1},
                     {"column": diagonalGroupYIndex+2, "row": diagonalGroupXIndex+2},
                     {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex+3}
                 ];
-
-                return winningPeices;
-
             }
         }
     }
@@ -93,16 +88,16 @@ export const checkGameBoard = gameBoard => {
             ];
 
             if (areIdentical(diagonalGroup)) {
-                let winningPeices = [
+                winningPeices = [
+                    ...winningPeices,
                     {"column": diagonalGroupYIndex+0, "row": diagonalGroupXIndex-0},
                     {"column": diagonalGroupYIndex+1, "row": diagonalGroupXIndex-1},
                     {"column": diagonalGroupYIndex+2, "row": diagonalGroupXIndex-2},
                     {"column": diagonalGroupYIndex+3, "row": diagonalGroupXIndex-3},
                 ];
-                
-                return winningPeices
             }
         }
+        if (winningPeices.length > 0) return winningPeices;
     }
 };
 
