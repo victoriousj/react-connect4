@@ -2,25 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 
-export default class Container extends React.Component {
-    static propTypes = {
-        Columns: PropTypes.array.isRequired
-    }
+const Container = props => (
+    <div className="container">
+        <div className="container-top"></div>
+        <div className="container-body">
+            {props.Columns}
+        </div>
+        <div className="container-bottom">Connect4</div>
+    </div>
+);
 
-    constructor(props) {
-        super(props);
-    }
+Container.propTypes = {
+    Columns: PropTypes.array.isRequired,
+};
 
-    render () {
-
-        return (
-            <div className="container">
-                <div className="container-top"></div>
-                <div className="container-body">
-                    {this.props.Columns}
-                </div>
-                <div className="container-bottom">Connect4</div>
-            </div>
-        )
-    }
-} 
+export default Container;

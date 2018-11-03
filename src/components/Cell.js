@@ -9,10 +9,6 @@ export default class Cell extends React.Component {
         lowestFreeCell: PropTypes.bool.isRequired,
         currentPlayer: PropTypes.number.isRequired,
     }
-
-    constructor(props) {
-        super(props);
-    }
     
     render() {
         const playerPiece = this.props.cellValue !== 0

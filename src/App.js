@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Column from './components/Column';
-import * as Helpers from './helpers/helpers';
 import Container from './components/Container';
 import PlayClock from './components/PlayClock';
+
+import * as Helpers from './helpers/helpers';
 import * as GameInteractionCreators from './actions/gameInteractions';
-import { clearInterval } from 'timers';
 
 
 class App extends React.Component {
