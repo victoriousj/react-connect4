@@ -2,16 +2,6 @@ import React from 'react';
 
 class PlayClock extends React.Component {
 
-    componentDidMount() {
-        this.interval = setInterval(this.onTick, 1000);
-    }
-
-    onTick = () => {
-        if (this.props.currentPlayer === this.props.player) {
-            this.props.incTimer();
-        }
-    }
-
     render() {
 
         return (

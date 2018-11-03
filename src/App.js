@@ -8,6 +8,7 @@ import * as Helpers from './helpers/helpers';
 import Container from './components/Container';
 import PlayClock from './components/PlayClock';
 import * as GameInteractionCreators from './actions/gameInteractions';
+import { clearInterval } from 'timers';
 
 
 class App extends React.Component {
@@ -29,10 +30,13 @@ class App extends React.Component {
         this.cellSelection = bindActionCreators(GameInteractionCreators.cellSelection, dispatch);
     };
 
+    componentDidMount() {
+        setInterval(this.incTimer, 1000);
+    }
+
     componentDidUpdate() {
         if (this.props.isPlaying) {
             const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
-            console.log(winningPieces);
             if (winningPieces) {
                 this.endGame();
                 this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces));
@@ -56,8 +60,8 @@ class App extends React.Component {
         return (
             <div className = "App">
                 <div className="playclocks">
-                    <PlayClock player={1} incTimer={this.incTimer} time={this.props.playerOneTime} currentPlayer={this.props.currentPlayer}/>
-                    <PlayClock player={2} incTimer={this.incTimer} time={this.props.playerTwoTime} currentPlayer={this.props.currentPlayer} />
+                    <PlayClock player={1} time={this.props.playerOneTime} />
+                    <PlayClock player={2} time={this.props.playerTwoTime} />
                 </div>
                 <Container Columns={columns} />
             </div>
