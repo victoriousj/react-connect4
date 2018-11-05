@@ -48,7 +48,12 @@ export default function GameInteractions(state=initialState, action) {
                 isPlaying: false,
             }
         }
-
+        
+        case GameInteractionActionTypes.RESET_GAME: {
+            console.log(initialState);
+            return initialState;
+        }
+        
         case GameInteractionActionTypes.REGISTER_GAME_WINNING_PEICES: {
 
             return {

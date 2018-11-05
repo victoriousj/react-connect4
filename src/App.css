@@ -17,6 +17,64 @@ body {
     background-color: #1565C0;
 }
 
+.message-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.message-container {
+    position: absolute;
+    width: 40vw;
+    height: 30vh;
+    background-color: rgba(233, 233, 233, 1);    
+    border-radius: 1vh;
+}
+
+.message-top-half {
+    width: 100%;
+    height: 70%;
+    background-color: #1565C0;
+    position: absolute;
+    top: 0;
+    left:0;
+    border-radius: 1vh 1vh 0 0;
+}
+
+.message-bottom-half{
+    position: absolute;
+    bottom:0;
+    left: 0;
+    border-radius:0 0 1vh 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(233, 233, 233, 1);    
+}
+
+.message-bottom-half button {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 1rem 2rem;
+    color: white;
+    background-color: #1565C0;
+    border: none;
+    cursor: pointer;
+}
+
+.message-bottom-half button:hover {
+    color: #1565C0;
+    background-color: rgba(233, 233, 233, 1);    
+    border: 2px solid #1565C0;
+}
 
 .container {
     width: 72vh;

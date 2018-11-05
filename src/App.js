@@ -6,6 +6,7 @@ import React from 'react';
 import Column from './components/Column';
 import Container from './components/Container';
 import PlayClock from './components/PlayClock';
+import MessageOverlay from './components/MessageOverlay';
 
 import * as Helpers from './helpers/helpers';
 import * as GameInteractionCreators from './actions/gameInteractions';
@@ -27,6 +28,7 @@ class App extends React.Component {
 
         this.endGame = bindActionCreators(GameInteractionCreators.endGame, dispatch);
         this.incTimer = bindActionCreators(GameInteractionCreators.incTimer, dispatch);
+        this.resetGame = bindActionCreators(GameInteractionCreators.resetGame, dispatch);
         this.cellSelection = bindActionCreators(GameInteractionCreators.cellSelection, dispatch);
     };
 
@@ -59,6 +61,7 @@ class App extends React.Component {
         
         return (
             <div className = "App">
+                <MessageOverlay isPlaying={this.props.isPlaying} resetGame={this.resetGame} />
                 <div className="playclocks">
                     <PlayClock player={1} time={this.props.playerOneTime} />
                     <PlayClock player={2} time={this.props.playerTwoTime} />
