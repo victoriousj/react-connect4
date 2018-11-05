@@ -31,8 +31,10 @@ body {
 
 .message-container {
     position: absolute;
-    width: 40vw;
+    width: 45vh;
     height:15vh;
+    min-width: 200px;
+    min-height: 70px;
     background-color: rgba(233, 233, 233, 1);    
     border-radius: 1vh;
 }
@@ -52,7 +54,7 @@ body {
 }
 
 .message-top-half h1 {
-
+    font-size: 1rem;
 }
 
 .message-bottom-half{
@@ -70,8 +72,8 @@ body {
 
 .message-bottom-half button {
     display: inline-block;
-    border-radius: 3px;
-    padding: .75rem 2rem;
+    border-radius: .5vh;
+    padding: .75vh 2vh;
     color: white;
     background-color: #1565C0;
     border: none;
