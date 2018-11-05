@@ -36,10 +36,11 @@ class App extends React.Component {
         setInterval(this.incTimer, 1000);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         if (this.props.isPlaying) {
-            const winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
+            let winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
             if (winningPieces) {
+                console.log(winningPieces);
                 this.endGame();
                 this.dispatch(GameInteractionCreators.registerGameWinningPeices(winningPieces));
             }
@@ -61,7 +62,7 @@ class App extends React.Component {
         
         return (
             <div className = "App">
-                <MessageOverlay isPlaying={this.props.isPlaying} resetGame={this.resetGame} />
+                <MessageOverlay winningPlayer={this.props.currentPlayer === 1 ? 2: 1} showOverlay={this.props.showOverlay} resetGame={this.resetGame} />
                 <div className="playclocks">
                     <PlayClock player={1} time={this.props.playerOneTime} />
                     <PlayClock player={2} time={this.props.playerTwoTime} />
@@ -76,6 +77,7 @@ const mapStateToProps = state => (
     {
         gameBoard: state.gameBoard,
         isPlaying: state.isPlaying,
+        showOverlay: state.showOverlay,
         currentPlayer: state.currentPlayer,
         winningPieces: state.winningPieces,
         playerOneTime: state.playerOneTime,

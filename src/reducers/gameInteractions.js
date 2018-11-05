@@ -20,6 +20,8 @@ const initialState = {
     winningPieces: [],
 
     isPlaying: true,
+
+    showOverlay: false
 }
 
 export default function GameInteractions(state=initialState, action) {
@@ -46,12 +48,28 @@ export default function GameInteractions(state=initialState, action) {
             return {
                 ...state,
                 isPlaying: false,
+                showOverlay: true,
             }
         }
         
         case GameInteractionActionTypes.RESET_GAME: {
-            console.log(initialState);
-            return initialState;
+            return {
+                currentPlayer: 1,
+                playerOneTime: 0,
+                playerTwoTime: 0,
+                gameBoard: [
+                    [ 0, 0, 0, 0, 0, 0 ],
+                    [ 0, 0, 0, 0, 0, 0 ],
+                    [ 0, 0, 0, 0, 0, 0 ],
+                    [ 0, 0, 0, 0, 0, 0 ],
+                    [ 0, 0, 0, 0, 0, 0 ],
+                    [ 0, 0, 0, 0, 0, 0 ],
+                    [ 0, 0, 0, 0, 0, 0 ],
+                ],
+                winningPieces: [],
+                isPlaying: true,
+                showOverlay: false
+            };
         }
         
         case GameInteractionActionTypes.REGISTER_GAME_WINNING_PEICES: {
