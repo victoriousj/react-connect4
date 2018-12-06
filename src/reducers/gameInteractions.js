@@ -92,22 +92,12 @@ export default function GameInteractions(state = initialState, action) {
   }
 }
 
-const timePlayerOneTimer = state => {
-  let playerTime = state.playerOneTime;
-  let newPlayerTime = ++playerTime;
+const timePlayerOneTimer = state => ({
+  ...state,
+  playerOneTime: 1 + state.playerOneTime
+});
 
-  return {
-    ...state,
-    playerOneTime: newPlayerTime
-  };
-};
-
-const timePlayerTwoTimer = state => {
-  let playerTime = state.playerTwoTime;
-  let newPlayerTime = ++playerTime;
-
-  return {
-    ...state,
-    playerTwoTime: newPlayerTime
-  };
-};
+const timePlayerTwoTimer = state => ({
+  ...state,
+  playerTwoTime: 1 + state.playerTwoTime
+});
