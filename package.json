@@ -1,7 +1,7 @@
 {
   "name": "react-connect4",
   "version": "0.1.0",
-  "description": "A remaking of the classic Connect 4 game, using React, Webpack, and Babel",
+  "description": "A remaking of the classic Connect 4 game, using React, Webpack, Redux and Babel",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode-development",

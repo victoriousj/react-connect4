@@ -1,6 +1,6 @@
 import * as GameInteractionActionTypes from "../actiontypes/gameInteractions";
 
-const initialState = {
+const getInitialState = () => ({
   currentPlayer: 1,
 
   playerOneTime: 0,
@@ -22,7 +22,9 @@ const initialState = {
   isPlaying: true,
 
   showOverlay: false
-};
+});
+
+const initialState = getInitialState();
 
 export default function GameInteractions(state = initialState, action) {
   switch (action.type) {
@@ -50,23 +52,7 @@ export default function GameInteractions(state = initialState, action) {
     }
 
     case GameInteractionActionTypes.RESET_GAME: {
-      return {
-        currentPlayer: 1,
-        playerOneTime: 0,
-        playerTwoTime: 0,
-        gameBoard: [
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0]
-        ],
-        winningPieces: [],
-        isPlaying: true,
-        showOverlay: false
-      };
+      return getInitialState();
     }
 
     case GameInteractionActionTypes.REGISTER_GAME_WINNING_PEICES: {
