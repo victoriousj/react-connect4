@@ -52,13 +52,6 @@ export default function GameInteractions(state = initialState, action) {
       return getInitialState();
     }
 
-    case GameInteractionActionTypes.REGISTER_GAME_WINNING_PEICES: {
-      return {
-        ...state,
-        winningPieces: action.winningPieces
-      };
-    }
-
     case GameInteractionActionTypes.INC_TIMER: {
       if (!state.isPlaying) return state;
 

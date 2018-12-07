@@ -6,11 +6,6 @@ export const cellSelection = (rowIndex, columnIndex) => ({
   columnIndex
 });
 
-export const registerGameWinningPeices = winningPieces => ({
-  type: GameInteractionActionTypes.REGISTER_GAME_WINNING_PEICES,
-  winningPieces
-});
-
 export const resetGame = () => ({
   type: GameInteractionActionTypes.RESET_GAME
 });
