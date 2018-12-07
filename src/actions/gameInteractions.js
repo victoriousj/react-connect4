@@ -1,7 +1,5 @@
 import * as GameInteractionActionTypes from "../actiontypes/gameInteractions";
 
-export const endGame = () => ({ type: GameInteractionActionTypes.END_GAME });
-
 export const cellSelection = (rowIndex, columnIndex) => ({
   type: GameInteractionActionTypes.CELL_SELECTION,
   rowIndex,

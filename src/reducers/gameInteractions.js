@@ -48,14 +48,6 @@ export default function GameInteractions(state = initialState, action) {
       return newState;
     }
 
-    case GameInteractionActionTypes.END_GAME: {
-      return {
-        ...state,
-        isPlaying: false,
-        showOverlay: true
-      };
-    }
-
     case GameInteractionActionTypes.RESET_GAME: {
       return getInitialState();
     }
