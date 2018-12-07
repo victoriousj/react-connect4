@@ -8,7 +8,7 @@ import Container from "./components/Container";
 import PlayClock from "./components/PlayClock";
 import MessageOverlay from "./components/MessageOverlay";
 
-import * as Helpers from "./helpers/helpers";
+import { checkGameBoard } from "./helpers";
 import * as GameInteractionCreators from "./actions/gameInteractions";
 
 class App extends React.Component {
@@ -49,9 +49,8 @@ class App extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isPlaying) {
-      let winningPieces = Helpers.checkGameBoard(this.props.gameBoard);
+      let winningPieces = checkGameBoard(this.props.gameBoard);
       if (winningPieces) {
-        console.log(winningPieces);
         this.endGame();
         this.dispatch(
           GameInteractionCreators.registerGameWinningPeices(winningPieces)
