@@ -8,7 +8,6 @@ import Container from "./components/Container";
 import PlayClock from "./components/PlayClock";
 import MessageOverlay from "./components/MessageOverlay";
 
-import { checkGameBoard } from "./helpers";
 import * as GameInteractionCreators from "./actions/gameInteractions";
 
 class App extends React.Component {
@@ -25,10 +24,6 @@ class App extends React.Component {
     const { dispatch } = props;
     this.dispatch = dispatch;
 
-    this.endGame = bindActionCreators(
-      GameInteractionCreators.endGame,
-      dispatch
-    );
     this.incTimer = bindActionCreators(
       GameInteractionCreators.incTimer,
       dispatch
@@ -47,26 +42,14 @@ class App extends React.Component {
     setInterval(this.incTimer, 1000);
   }
 
-  componentDidUpdate() {
-    if (this.props.isPlaying) {
-      let winningPieces = checkGameBoard(this.props.gameBoard);
-      if (winningPieces) {
-        this.endGame();
-        this.dispatch(
-          GameInteractionCreators.registerGameWinningPeices(winningPieces)
-        );
-      }
-    }
-  }
-
   render() {
     let columns = this.props.gameBoard.map((columnValues, index) => (
       <Column
         key={index}
         columnIndex={index}
         columnValues={columnValues}
-        cellSelection={this.cellSelection}
         isPlaying={this.props.isPlaying}
+        cellSelection={this.cellSelection}
         currentPlayer={this.props.currentPlayer}
         winningPieces={this.props.winningPieces}
       />
@@ -75,9 +58,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <MessageOverlay
-          winningPlayer={this.props.currentPlayer === 1 ? 2 : 1}
-          showOverlay={this.props.showOverlay}
           resetGame={this.resetGame}
+          showOverlay={this.props.showOverlay}
+          winningPlayer={this.props.currentPlayer === 1 ? 2 : 1}
         />
         <div className="playclocks">
           <PlayClock player={1} time={this.props.playerOneTime} />

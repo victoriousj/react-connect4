@@ -1,4 +1,5 @@
 import * as GameInteractionActionTypes from "../actiontypes/gameInteractions";
+import { checkGameBoard } from "../helpers";
 
 const getInitialState = () => ({
   currentPlayer: 1,
@@ -31,16 +32,20 @@ export default function GameInteractions(state = initialState, action) {
     case GameInteractionActionTypes.CELL_SELECTION: {
       if (!state.isPlaying) return state;
 
-      let newGameBoard = [...state.gameBoard];
-      newGameBoard[action.columnIndex][action.rowIndex] = state.currentPlayer;
+      const newState = {...state};
 
-      let nextPlayer = state.currentPlayer === 1 ? 2 : 1;
+      newState.gameBoard[action.columnIndex][action.rowIndex] = newState.currentPlayer;
 
-      return {
-        ...state,
-        gameBoard: newGameBoard,
-        currentPlayer: nextPlayer
-      };
+      const winningPieces = checkGameBoard(state.gameBoard);
+      if (winningPieces){
+        newState.winningPieces = winningPieces;
+        newState.showOverlay = true;
+        newState.isPlaying = false;
+      }
+
+      newState.currentPlayer = newState.currentPlayer === 1 ? 2 : 1;
+
+      return newState;
     }
 
     case GameInteractionActionTypes.END_GAME: {
