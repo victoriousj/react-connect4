@@ -43,15 +43,17 @@ class App extends React.Component {
   }
 
   render() {
-    let columns = this.props.gameBoard.map((columnValues, index) => (
+    const { props } = this;
+
+    let columns = props.gameBoard.map((columnValues, index) => (
       <Column
         key={index}
         columnIndex={index}
         columnValues={columnValues}
-        isPlaying={this.props.isPlaying}
+        isPlaying={props.isPlaying}
         cellSelection={this.cellSelection}
-        currentPlayer={this.props.currentPlayer}
-        winningPieces={this.props.winningPieces}
+        currentPlayer={props.currentPlayer}
+        winningPieces={props.winningPieces}
       />
     ));
 
@@ -59,12 +61,12 @@ class App extends React.Component {
       <div className="App">
         <MessageOverlay
           resetGame={this.resetGame}
-          showOverlay={this.props.showOverlay}
-          winningPlayer={this.props.currentPlayer === 1 ? 2 : 1}
+          showOverlay={props.showOverlay}
+          winningPlayer={props.currentPlayer === 1 ? 2 : 1}
         />
         <div className="playclocks">
-          <PlayClock player={1} time={this.props.playerOneTime} />
-          <PlayClock player={2} time={this.props.playerTwoTime} />
+          <PlayClock player={1} time={props.playerOneTime} />
+          <PlayClock player={2} time={props.playerTwoTime} />
         </div>
         <Container Columns={columns} />
       </div>
