@@ -22,22 +22,24 @@ const Column = props => {
     winningPieces.length > 0 &&
     winningPieces.some(winningPeice => winningPeice.column === columnIndex);
 
-  const cells = columnValues.map((cellValue, i) => (
-    <Cell
-      key={i}
-      cellIndex={i}
-      cellValue={cellValue}
-      columnIndex={columnIndex}
-      currentPlayer={currentPlayer}
-      lowestFreeCell={isPlaying && lowestFreeCell === i}
-      winningPiece={
-        hasWinningPieces &&
-        winningPieces.some(
-          cell => cell.row === i && cell.column === columnIndex
-        )
-      }
-    />
-  ));
+  const cells = columnValues.map((cellValue, i) => {
+    const isLowestFreeCell = isPlaying && i === lowestFreeCell;
+    const isWinningPiece =
+      hasWinningPieces &&
+      winningPieces.some(x => x.row === i && x.column === columnIndex);
+
+    return (
+      <Cell
+        key={i}
+        cellIndex={i}
+        cellValue={cellValue}
+        columnIndex={columnIndex}
+        winningPiece={isWinningPiece}
+        currentPlayer={currentPlayer}
+        lowestFreeCell={isLowestFreeCell}
+      />
+    );
+  });
 
   return (
     <div

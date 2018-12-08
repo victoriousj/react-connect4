@@ -32,12 +32,13 @@ export default function GameInteractions(state = initialState, action) {
     case GameInteractionActionTypes.CELL_SELECTION: {
       if (!state.isPlaying) return state;
 
-      const newState = {...state};
+      const newState = { ...state };
 
-      newState.gameBoard[action.columnIndex][action.rowIndex] = newState.currentPlayer;
+      newState.gameBoard[action.columnIndex][action.rowIndex] =
+        newState.currentPlayer;
 
       const winningPieces = checkGameBoard(state.gameBoard);
-      if (winningPieces){
+      if (winningPieces) {
         newState.winningPieces = winningPieces;
         newState.showOverlay = true;
         newState.isPlaying = false;
