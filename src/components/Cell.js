@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const Cell = props => {
-  const { cellValue, winningPiece, lowestFreeCell, currentPlayer } = props;
+  const { cellValue, winningPiece, firstFreeCell, currentPlayer } = props;
+
   const playerPiece =
     cellValue !== 0 ? (
       <div
@@ -16,7 +17,7 @@ const Cell = props => {
   return (
     <div className="cell-parent">
       <div
-        className={`cell ${lowestFreeCell ? "glow" : ""} ${
+        className={`cell ${firstFreeCell ? "glow" : ""} ${
           currentPlayer === 1 ? `red` : `black`
         }`}
       />

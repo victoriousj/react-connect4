@@ -13,17 +13,16 @@ const Column = props => {
     cellSelection
   } = props;
 
-  let lowestFreeCell =
-    [...columnValues].findIndex(cellValue => cellValue !== 0) - 1;
+  let firstFreeCell = [...columnValues].findIndex(cellValue => cellValue !== 0);
   // Initial value with no selected cells will be -2
-  lowestFreeCell = lowestFreeCell === -2 ? 5 : lowestFreeCell;
+  firstFreeCell = firstFreeCell === -2 ? 5 : firstFreeCell - 1;
 
   const hasWinningPieces =
     winningPieces.length > 0 &&
     winningPieces.some(winningPeice => winningPeice.column === columnIndex);
 
   const cells = columnValues.map((cellValue, i) => {
-    const isLowestFreeCell = isPlaying && i === lowestFreeCell;
+    const isFirstFreeCell = isPlaying && i === firstFreeCell;
     const isWinningPiece =
       hasWinningPieces &&
       winningPieces.some(x => x.row === i && x.column === columnIndex);
@@ -36,7 +35,7 @@ const Column = props => {
         columnIndex={columnIndex}
         winningPiece={isWinningPiece}
         currentPlayer={currentPlayer}
-        lowestFreeCell={isLowestFreeCell}
+        firstFreeCell={firstFreeCell}
       />
     );
   });
