@@ -1,11 +1,11 @@
-import * as interactionActionTypes from "../actiontypes/interactions";
+import * as actionTypes from '../actiontypes/interactions';
+
+export const resetGame = () => ({ type: actionTypes.RESET_GAME });
+
+export const incTimer = () => ({ type: actionTypes.INC_TIMER });
 
 export const addPiece = (rowIndex, columnIndex) => ({
-  type: interactionActionTypes.ADD_PIECE,
+  type: actionTypes.ADD_PIECE,
   rowIndex,
   columnIndex
 });
-
-export const resetGame = () => ({ type: interactionActionTypes.RESET_GAME });
-
-export const incTimer = () => ({ type: interactionActionTypes.INC_TIMER });

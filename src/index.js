@@ -5,15 +5,10 @@ import { Provider } from "react-redux";
 
 import "./App.css";
 import App from "./App";
-import interactionReducer from "./reducers/interactions";
-
-const store = createStore(
-  interactionReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import reducer from "./reducers/interactions";
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStore(reducer)}>
     <App />
   </Provider>,
 

@@ -1,5 +1,5 @@
-import * as interactionActionTypes from "../actiontypes/interactions";
-import { checkGameBoard } from "../helpers";
+import * as interactionActionTypes from '../actiontypes/interactions';
+import { checkGameBoard } from '../helpers';
 
 const getInitialState = () => ({
   isPlaying: true,
@@ -36,9 +36,9 @@ export default function interactions(state = initialState, action) {
         newState.winningPieces = winningPieces;
         newState.showOverlay = true;
         newState.isPlaying = false;
+      } else {
+        newState.currentPlayer = newState.currentPlayer === 1 ? 2 : 1;
       }
-
-      newState.currentPlayer = newState.currentPlayer === 1 ? 2 : 1;
 
       return newState;
     }

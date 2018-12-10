@@ -29,18 +29,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.message-overlay.message-overlay-on {
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 100;
 }
 
 .message-overlay span {
-  display: none;
-}
-
-.message-overlay-on.message-overlay span {
   transform: translate(-50%, -50%);
   position: absolute;
   display: inline-block;

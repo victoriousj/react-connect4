@@ -8,7 +8,7 @@ import Container from "./components/Container";
 import PlayClock from "./components/PlayClock";
 import MessageOverlay from "./components/MessageOverlay";
 
-import * as interactionCreators from "./actions/interactions";
+import * as actionCreators from "./actions/interactions";
 
 class App extends React.Component {
   static propTypes = {
@@ -24,14 +24,9 @@ class App extends React.Component {
     const { dispatch } = props;
     this.dispatch = dispatch;
 
-    this.incTimer = bindActionCreators(interactionCreators.incTimer, dispatch);
-
-    this.resetGame = bindActionCreators(
-      interactionCreators.resetGame,
-      dispatch
-    );
-
-    this.addPiece = bindActionCreators(interactionCreators.addPiece, dispatch);
+    this.incTimer = bindActionCreators(actionCreators.incTimer, dispatch);
+    this.addPiece = bindActionCreators(actionCreators.addPiece, dispatch);
+    this.resetGame = bindActionCreators(actionCreators.resetGame, dispatch);
   }
 
   componentDidMount() {
@@ -40,29 +35,39 @@ class App extends React.Component {
 
   render() {
     const { props } = this;
+    const {
+      isPlaying,
+      currentPlayer,
+      winningPieces,
+      showOverlay,
+      playerOneTime,
+      playerTwoTime
+    } = props;
 
-    let columns = props.gameBoard.map((columnValues, index) => (
+    const columns = props.gameBoard.map((columnValues, index) => (
       <Column
         key={index}
         columnIndex={index}
+        isPlaying={isPlaying}
         addPiece={this.addPiece}
         columnValues={columnValues}
-        isPlaying={props.isPlaying}
-        currentPlayer={props.currentPlayer}
-        winningPieces={props.winningPieces}
+        currentPlayer={currentPlayer}
+        winningPieces={winningPieces}
       />
     ));
 
     return (
       <div className="App">
-        <MessageOverlay
-          resetGame={this.resetGame}
-          showOverlay={props.showOverlay}
-          winningPlayer={props.currentPlayer === 1 ? 2 : 1}
-        />
+        {showOverlay && (
+          <MessageOverlay
+            showOverlay={showOverlay}
+            resetGame={this.resetGame}
+            winningPlayer={currentPlayer}
+          />
+        )}
         <div className="playclocks">
-          <PlayClock player={1} time={props.playerOneTime} />
-          <PlayClock player={2} time={props.playerTwoTime} />
+          <PlayClock player={1} time={playerOneTime} />
+          <PlayClock player={2} time={playerTwoTime} />
         </div>
         <Container Columns={columns} />
       </div>

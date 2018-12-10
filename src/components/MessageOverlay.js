@@ -1,40 +1,39 @@
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import React from "react";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-class MessageOverlay extends React.Component {
-  render() {
-    const overlay = this.props.showOverlay ? (
-      <div key={1} className="message-container">
-        <div className="message-top-half">
-          <h2>{`Player ${this.props.winningPlayer} Wins!`}</h2>
-        </div>
-        <div className="message-bottom-half">
-          <button
-            className="message-button"
-            onClick={() => this.props.resetGame()}
-          >
-            Reset
-          </button>
-        </div>
+const MessageOverlay = props => {
+  const { winningPlayer, resetGame } = props;
+
+  const overlay = (
+    <div className="message-container">
+      <div className="message-top-half">
+        <h2>{`Player ${winningPlayer} Wins!`}</h2>
       </div>
-    ) : null;
+      <div className="message-bottom-half">
+        <button className="message-button" onClick={() => resetGame()}>
+          Reset
+        </button>
+      </div>
+    </div>
+  );
 
-    return (
-      <div
-        className={`message-overlay ${
-          this.props.showOverlay ? "message-overlay-on" : ""
-        }`}
+  return (
+    <div className={`message-overlay`}>
+      <ReactCSSTransitionGroup
+        transitionName="side-slide"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={200}
       >
-        <ReactCSSTransitionGroup
-          transitionName="side-slide"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={200}
-        >
-          {overlay}
-        </ReactCSSTransitionGroup>
-      </div>
-    );
-  }
-}
+        {overlay}
+      </ReactCSSTransitionGroup>
+    </div>
+  );
+};
+
+MessageOverlay.propTypes = {
+  winningPlayer: PropTypes.number.isRequired,
+  resetGame: PropTypes.func.isRequired
+};
 
 export default MessageOverlay;
