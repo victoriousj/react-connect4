@@ -8,7 +8,7 @@ import Container from "./components/Container";
 import PlayClock from "./components/PlayClock";
 import MessageOverlay from "./components/MessageOverlay";
 
-import * as GameInteractionCreators from "./actions/gameInteractions";
+import * as interactionCreators from "./actions/interactions";
 
 class App extends React.Component {
   static propTypes = {
@@ -24,18 +24,14 @@ class App extends React.Component {
     const { dispatch } = props;
     this.dispatch = dispatch;
 
-    this.incTimer = bindActionCreators(
-      GameInteractionCreators.incTimer,
-      dispatch
-    );
+    this.incTimer = bindActionCreators(interactionCreators.incTimer, dispatch);
+
     this.resetGame = bindActionCreators(
-      GameInteractionCreators.resetGame,
+      interactionCreators.resetGame,
       dispatch
     );
-    this.cellSelection = bindActionCreators(
-      GameInteractionCreators.cellSelection,
-      dispatch
-    );
+
+    this.addPiece = bindActionCreators(interactionCreators.addPiece, dispatch);
   }
 
   componentDidMount() {
@@ -49,9 +45,9 @@ class App extends React.Component {
       <Column
         key={index}
         columnIndex={index}
+        addPiece={this.addPiece}
         columnValues={columnValues}
         isPlaying={props.isPlaying}
-        cellSelection={this.cellSelection}
         currentPlayer={props.currentPlayer}
         winningPieces={props.winningPieces}
       />

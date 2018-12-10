@@ -1,13 +1,12 @@
-import * as GameInteractionActionTypes from "../actiontypes/gameInteractions";
+import * as interactionActionTypes from "../actiontypes/interactions";
 import { checkGameBoard } from "../helpers";
 
 const getInitialState = () => ({
+  isPlaying: true,
   currentPlayer: 1,
-
   playerOneTime: 0,
-
   playerTwoTime: 0,
-
+  showOverlay: false,
   gameBoard: [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -17,19 +16,14 @@ const getInitialState = () => ({
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
   ],
-
-  winningPieces: [],
-
-  isPlaying: true,
-
-  showOverlay: false
+  winningPieces: []
 });
 
 const initialState = getInitialState();
 
-export default function GameInteractions(state = initialState, action) {
+export default function interactions(state = initialState, action) {
   switch (action.type) {
-    case GameInteractionActionTypes.CELL_SELECTION: {
+    case interactionActionTypes.ADD_PIECE: {
       if (!state.isPlaying) return state;
 
       const newState = { ...state };
@@ -49,11 +43,11 @@ export default function GameInteractions(state = initialState, action) {
       return newState;
     }
 
-    case GameInteractionActionTypes.RESET_GAME: {
+    case interactionActionTypes.RESET_GAME: {
       return getInitialState();
     }
 
-    case GameInteractionActionTypes.INC_TIMER: {
+    case interactionActionTypes.INC_TIMER: {
       if (!state.isPlaying) return state;
 
       state =

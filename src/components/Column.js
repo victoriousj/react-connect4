@@ -5,17 +5,18 @@ import Cell from "./Cell";
 
 const Column = props => {
   const {
+    addPiece,
     isPlaying,
     columnIndex,
     columnValues,
     winningPieces,
-    currentPlayer,
-    cellSelection
+    currentPlayer
   } = props;
 
-  let firstFreeCell = [...columnValues].findIndex(cellValue => cellValue !== 0);
+  let firstFreeCell =
+    [...columnValues].findIndex(cellValue => cellValue !== 0) - 1;
   // Initial value with no selected cells will be -2
-  firstFreeCell = firstFreeCell === -2 ? 5 : firstFreeCell - 1;
+  firstFreeCell = firstFreeCell === -2 ? 5 : firstFreeCell;
 
   const hasWinningPieces =
     winningPieces.length > 0 &&
@@ -35,7 +36,7 @@ const Column = props => {
         columnIndex={columnIndex}
         winningPiece={isWinningPiece}
         currentPlayer={currentPlayer}
-        firstFreeCell={firstFreeCell}
+        isFirstFreeCell={isFirstFreeCell}
       />
     );
   });
@@ -43,7 +44,7 @@ const Column = props => {
   return (
     <div
       className="column"
-      onClick={() => cellSelection(lowestFreeCell, columnIndex)}
+      onClick={() => addPiece(firstFreeCell, columnIndex)}
     >
       {cells}
     </div>
@@ -51,10 +52,10 @@ const Column = props => {
 };
 
 Column.propTypes = {
+  addPiece: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   columnIndex: PropTypes.number.isRequired,
   columnValues: PropTypes.array.isRequired,
-  cellSelection: PropTypes.func.isRequired,
   winningPieces: PropTypes.array.isRequired,
   currentPlayer: PropTypes.number.isRequired
 };

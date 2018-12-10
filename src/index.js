@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 
 import "./App.css";
 import App from "./App";
-import GameInteractionReducer from "./reducers/gameInteractions";
+import interactionReducer from "./reducers/interactions";
 
 const store = createStore(
-  GameInteractionReducer,
+  interactionReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
